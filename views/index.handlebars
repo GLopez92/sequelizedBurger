@@ -1,0 +1,45 @@
+
+<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRmjp0W6Pl6ynv_5DzybXm_oTysm0YFvAvnZjdkX6FSQjxA92J1"/>
+
+<h1>Eat-Da-Burgers!</h1>
+
+
+<ul>
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      <li>
+        {{this.id}}: {{this.burger_name}}
+        <form action="api/new/{{this.id}}?" method="POST">
+          <input type="hidden" name="devoured" value="true">
+          <button type="submit">Eat Up!</button>
+        </form>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+
+
+<ul>
+  {{#each burgers}}
+    {{#if this.devoured}}
+      <li>
+        {{this.id}}: {{this.burger_name}}
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+
+
+<form class="create-update-form" action="/api/new" method="POST">
+
+  <div class="form-group">
+    <label for="ca"></label>
+    <input type="text" id="ca" name="burger_name">
+  </div>
+
+  <button type="submit">Submit</button>
+
+  <h6>Enter a Burger you want to eat the click "submit" button.</h6>
+</form>
