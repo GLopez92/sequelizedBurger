@@ -9,7 +9,7 @@
     {{#unless this.devoured}}
       <li>
         {{this.id}}: {{this.burger_name}}
-        <form action="api/new/{{this.id}}?" method="POST">
+        <form action="/api/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devoured" value="true">
           <button type="submit">Eat Up!</button>
         </form>
@@ -25,6 +25,12 @@
     {{#if this.devoured}}
       <li>
         {{this.id}}: {{this.burger_name}}
+        <!-- this allows you to change the devoured state of a burger back to false so it can be eaten again 🙃 -->
+        <form action="/api/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="false">
+          <button type="submit">Make another!</button>
+        </form>
+
       </li>
     {{/if}}
   {{/each}}

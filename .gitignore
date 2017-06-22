@@ -1,0 +1,2 @@
+# You always want to ignore your dependency folders since tracking them with git would be a nightmare.
+node_modules
